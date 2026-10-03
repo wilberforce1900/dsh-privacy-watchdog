@@ -1,7 +1,16 @@
 # dsh-privacy-watchdog
 
+[![CI](https://github.com/wilberforce1900/dsh-privacy-watchdog/actions/workflows/ci.yml/badge.svg)](https://github.com/wilberforce1900/dsh-privacy-watchdog/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org)
+[![Node 20+](https://img.shields.io/badge/node-20%2B-green.svg)](https://nodejs.org)
+
 > 会话级「隐私 & Token 滥用」看门狗：在模型的每个动作**执行之前**拦截、按本地规则裁决，
 > 违规则暂停整个对话并把决定权交还给用户。纯 Python、零第三方依赖、当前为沙盒 demo。
+
+```bash
+git clone https://github.com/wilberforce1900/dsh-privacy-watchdog.git
+```
 
 ## 核心理念
 

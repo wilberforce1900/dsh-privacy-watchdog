@@ -1,5 +1,10 @@
 # dsh-watchdog 集成壳
 
+> 本目录属于 [dsh-privacy-watchdog](https://github.com/wilberforce1900/dsh-privacy-watchdog)
+> （DSH 插件集成部分）。项目理念、快速开始与威胁模型见
+> [主 README](https://github.com/wilberforce1900/dsh-privacy-watchdog#readme) 与
+> [THREAT-MODEL.md](https://github.com/wilberforce1900/dsh-privacy-watchdog/blob/main/THREAT-MODEL.md)。
+
 把 `watchdog/`（Python 检测核心）接入真实 DeepSeek Harness 的薄壳层。
 已依据 **本机 @deepseek-ai/dsh 0.1.1-rc.2 发布包核实**的公开 API 设计：
 
