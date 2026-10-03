@@ -1,0 +1,6 @@
+# dsh-watchdog-smoke bundle patch: mounts the probe plugin into a profile
+# composition. Install with:  dsh plugin --profile <name> add <this dir>
+# Log file defaults to /tmp/dsh-watchdog-smoke.log, override via WATCHDOG_SMOKE_LOG.
+- insert:
+    - id: watchdog-smoke
+      name: dsh-watchdog-smoke

@@ -1,0 +1,24 @@
+# dsh-watchdog plugin patch row.
+# Merge into your profile's cordis.patch.yml AFTER installing the plugin into
+# the profile, e.g.:  dsh plugin --profile web add /path/to/dsh-watchdog-plugin
+#
+# With zero-path defaults the plugin derives sidecarEntry/policyFile/snapshotsDir
+# from its own checkout location — the minimal row below is all you need.
+# Override any of the paths explicitly only if your layout differs.
+- insert:
+    - id: privacy-watchdog
+      name: dsh-watchdog
+      config:
+        pythonBin: python3            # Windows default: python
+        # locale: zh                   # human-facing question strings: zh | en
+        # taskScope: ''                # optional static task description for the scope heuristic
+        # onSidecarError: deny         # fail closed when the sidecar dies: 'deny' (recommended) | 'allow'
+        # askTimeoutMs: 300000         # no human answer within this window -> cancel (fail closed)
+        # offerAllowlist: true         # on allow, offer to whitelist the flagged host/path
+        # maxRestarts: 3               # sidecar auto-restart budget (exponential backoff)
+        # restartBaseDelay: 500        # first restart delay in ms
+        # previewLimit: 400
+        # The three paths below default to this checkout — uncomment to override:
+        # sidecarEntry: /absolute/path/to/dsh-privacy-watchdog/integration/sidecar/watchdog_sidecar.py
+        # policyFile: /absolute/path/to/dsh-privacy-watchdog/policy.example.json
+        # snapshotsDir: /absolute/path/to/dsh-privacy-watchdog/snapshots

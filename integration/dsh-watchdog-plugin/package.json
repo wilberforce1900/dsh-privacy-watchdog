@@ -1,0 +1,11 @@
+{
+  "name": "dsh-watchdog",
+  "version": "0.1.0",
+  "description": "Privacy & token-abuse watchdog for DSH: intercepts tool calls at tools/pre-execute, reviews them in a Python sidecar, pauses and asks the human to allow / rollback / cancel.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test --test-concurrency=1"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests
+      - name: Sidecar protocol tests
+        run: python integration/sidecar/test_sidecar.py
+
+  node:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Plugin shell + e2e tests
+        working-directory: integration/dsh-watchdog-plugin
+        run: npm test
+      - name: In-process harness probe (real dsh-tools runtime)
+        run: node integration/smoke-test-plugin/inprocess-probe.mjs
+        continue-on-error: true   # requires the @deepseek-ai packages on the runner; local/CI-with-cache only
+
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No personal paths or hard-coded secrets committed
+        run: |
+          ! grep -rnE "/[U]sers/|/home/[a-z]" --include="*.py" --include="*.js" --include="*.mjs" --include="*.json" --include="*.yml" --include="*.md" .
+          # tests/ is exempt from the secret scan: the redact unit tests must
+          # contain pattern-valid fake keys (e.g. Amazon's documented example key).
+          ! grep -rniE "sk-[a-z0-9_-]{20,}|ghp_[a-z0-9]{16,}|AKIA[0-9A-Z]{16}" --exclude-dir=tests --exclude-dir=node_modules . | grep -v "REDACTED"

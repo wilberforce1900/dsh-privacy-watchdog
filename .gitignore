@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Demo / runtime artifacts（快照虽已脱敏，也不应入库）
+demo/sandbox-out/
+snapshots/
+integration/sidecar/.e2e-snapshots/
+
+# Node
+node_modules/
+package-lock.json

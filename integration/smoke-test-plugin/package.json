@@ -1,0 +1,13 @@
+{
+  "name": "dsh-watchdog-smoke",
+  "version": "0.1.0",
+  "description": "Minimal real-harness probe for dsh-privacy-watchdog integration seams: verifies tools/pre-execute fires, logs the ToolExecution shape, and probes ctx.userQuestions.ask behavior.",
+  "type": "module",
+  "main": "src/index.js",
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
